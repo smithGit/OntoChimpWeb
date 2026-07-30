@@ -11,6 +11,7 @@ Execute: uvicorn main:app
 from fastapi import FastAPI
 # from fastapi.middleware.cors import CORSMiddleware
 
+print(f"About to start FastAPI")
 app = FastAPI()
 
 @app.get("/")
