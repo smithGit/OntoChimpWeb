@@ -23,7 +23,7 @@ app = FastAPI(
 def root():
     return {
         "status": "OntoChimpWeb Online",
-        "version": "0.1 Diagnostic no routes..."
+        "version": "0.1 Diagnostic no routes...New Deployment"
     }
 
 @app.get("/ocw_version")
