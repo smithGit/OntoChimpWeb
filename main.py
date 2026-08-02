@@ -9,7 +9,7 @@ Execute: uvicorn main:app
 
 """
 from fastapi import FastAPI, HTTPException
-# from utils.mysql_select_columns import select_columns
+from utils.mysql_select_columns import select_columns
 # from fastapi.middleware.cors import CORSMiddleware
 
 print(f"Starting OntoChimpWeb main.py — routes: /, /ocw_version, /select_term", 
@@ -28,8 +28,10 @@ def root():
 
 @app.get("/ocw_version")
 def show_version():
+    test_result = select_columns()
     return {
-        "version": "OCW_v0.1"
+        "version": "OCW_v0.1",
+        "module_test": test_result,
     }
 
 # @app.get("/select_terms")
