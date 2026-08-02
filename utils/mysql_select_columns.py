@@ -51,68 +51,71 @@ def _get_connection() -> MySQLConnection:
         ssl_disabled=False,
     )
 
-def select_columns(
-    table_name: str,
-    column_names: Sequence[str] | None = None,
-) -> list[dict[str, Any]]:
-    """
-    Select rows from one table.
+def select_columns():
+    return "mysql_select_columns imported successfully"
 
-    Args:
-        table_name:
-            Table to query.
+# def select_columnsSAV(
+#     table_name: str,
+#     column_names: Sequence[str] | None = None,
+# ) -> list[dict[str, Any]]:
+#     """
+#     Select rows from one table.
 
-        column_names:
-            Columns to return. If None or empty, return all columns.
+#     Args:
+#         table_name:
+#             Table to query.
 
-    Returns:
-        Rows as dictionaries, suitable for Python and FastAPI JSON output.
+#         column_names:
+#             Columns to return. If None or empty, return all columns.
 
-    Example:
-        select_columns(
-            "term_model_doc",
-            ["term_id", "term_norm"],
-        )
-    """
-    table_sql = _validate_identifier(table_name)
-    print(f"temp done valid")
-    if column_names:
-        columns_sql = ", ".join(
-            _validate_identifier(column) for column in column_names
-        )
-    else:
-        columns_sql = "*"
+#     Returns:
+#         Rows as dictionaries, suitable for Python and FastAPI JSON output.
 
-    sql_query = f"SELECT {columns_sql} FROM {table_sql}"
+#     Example:
+#         select_columns(
+#             "term_model_doc",
+#             ["term_id", "term_norm"],
+#         )
+#     """
+#     table_sql = _validate_identifier(table_name)
+#     print(f"temp done valid")
+#     if column_names:
+#         columns_sql = ", ".join(
+#             _validate_identifier(column) for column in column_names
+#         )
+#     else:
+#         columns_sql = "*"
 
-    print(f"Executing query: {sql_query}", flush=True)
-    # rows = {"term_id": "t_123456789x", "term_norm": "suicde attempt"}
-    # return rows
-    connection: MySQLConnection | None = None
-    cursor = None
-    try:
-        connection = _get_connection()
-        print(f"After connections, user: {settings.mysql_user}")
-        # dictionary=True returns:
-        # {"term_id": "...", "term_norm": "..."}
-        # rather than:
-        # ("...", "...")
-        cursor = connection.cursor(dictionary=True)
-        cursor.execute(sql_query)
-        rows = cursor.fetchall()
-        print(f"Data retrieved: {len(rows)} rows", flush=True)
+#     sql_query = f"SELECT {columns_sql} FROM {table_sql}"
 
-        return rows
+#     print(f"Executing query: {sql_query}", flush=True)
+#     # rows = {"term_id": "t_123456789x", "term_norm": "suicde attempt"}
+#     # return rows
+#     connection: MySQLConnection | None = None
+#     cursor = None
+#     try:
+#         connection = _get_connection()
+#         print(f"After connections, user: {settings.mysql_user}")
+#         # dictionary=True returns:
+#         # {"term_id": "...", "term_norm": "..."}
+#         # rather than:
+#         # ("...", "...")
+#         cursor = connection.cursor(dictionary=True)
+#         cursor.execute(sql_query)
+#         rows = cursor.fetchall()
+#         print(f"Data retrieved: {len(rows)} rows", flush=True)
 
-    except mysql.connector.Error as exc:
-        print(f"MySQL SELECT failed: {exc}", flush=True)
-        raise
+#         return rows
 
-    finally:
-        if cursor is not None:
-            cursor.close()
+#     except mysql.connector.Error as exc:
+#         print(f"MySQL SELECT failed: {exc}", flush=True)
+#         raise
 
-        if connection is not None and connection.is_connected():
-            connection.close()
+#     finally:
+#         if cursor is not None:
+#             cursor.close()
+
+#         if connection is not None and connection.is_connected():
+#             connection.close()
 
 
