@@ -2,6 +2,7 @@
 main.py for OntoChimpWeb - Initial FastAPI module for testing
 
 2026-07-29 SMS Initial main.py for OntoChimpWeb
+2026-08-03 SMS Adding logging
 
 Folder: cd "D:\\OntoChimpWeb"
 conda activate env_python314
@@ -9,8 +10,10 @@ Execute: uvicorn main:app
 
 """
 from fastapi import FastAPI, HTTPException
+
 from utils.mysql_select_columns import select_columns
 # from fastapi.middleware.cors import CORSMiddleware
+
 
 print(f"Starting OntoChimpWeb main.py — routes: /, /ocw_version, /select_term", 
       flush=True) # flush avoids buffering
