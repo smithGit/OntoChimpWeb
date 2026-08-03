@@ -33,6 +33,7 @@ def _load_local_settings() -> Settings | None:
 def _load_environment_settings() -> Settings:
     required = [
         "MYSQL_HOST",
+        "MYSQL_PORT",
         "MYSQL_USER",
         "MYSQL_PASSWORD",
         "MYSQL_DATABASE",
