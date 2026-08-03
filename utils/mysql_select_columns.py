@@ -79,15 +79,15 @@ def select_columns(
 
     print("trying connection..........", flush=True)
     connection: MySQLConnection | None = None
-    try:
-        connection = _get_connection()
-        # print(f"After connections, user: {settings.mysql_user}")
-        print("we appear to have connection")
-        print(f"connection obj: {connection}")
-        return(["We appear to have connecion!!!"])
-    except mysql.connector.Error as exc:
-        print(f"MySQL SELECT failed: {exc}", flush=True)
-        raise
+    # try:
+    #     connection = _get_connection()
+    #     # print(f"After connections, user: {settings.mysql_user}")
+    #     print("we appear to have connection")
+    #     print(f"connection obj: {connection}")
+    #     return(["We appear to have connecion!!!"])
+    # except mysql.connector.Error as exc:
+    #     print(f"MySQL SELECT failed: {exc}", flush=True)
+    #     raise
     table_sql = _validate_identifier(table_name)
     print(f"temp done valid")
     if column_names:
@@ -105,8 +105,8 @@ def select_columns(
     # TODO: connection: MySQLConnection | None = None
     cursor = None
     try:
-        # TODO put in sep try...connection = _get_connection()
-        # print(f"After connections, user: {settings.mysql_user}")
+        connection = _get_connection()
+        print(f"After connections, user: {settings.mysql_user}")
         # dictionary=True returns:
         # {"term_id": "...", "term_norm": "..."}
         # rather than:
