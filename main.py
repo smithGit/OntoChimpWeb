@@ -15,7 +15,7 @@ from utils.mysql_select_columns import select_columns
 # from fastapi.middleware.cors import CORSMiddleware
 
 
-print(f"Starting OntoChimpWeb main.py — routes: /, /ocw_version, /select_term", 
+print(f"Starting OntoChimpWeb main.py routes: /, /ocw_version, /select_term", 
       flush=True) # flush avoids buffering
 app = FastAPI(
     title = "OntoChimpWeb",
