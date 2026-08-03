@@ -9,10 +9,11 @@ uvicorn
 gunicorn
 # Database
 mysql-connector-python # contains mysql-connector
+mysql-connector
 # Configuration
 python-dotenv
 # Data validation
-pydantic
+# later: pydantic
 
 # recall not needed:
 # os, re, collections, typing
