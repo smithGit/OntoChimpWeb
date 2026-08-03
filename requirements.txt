@@ -1,4 +1,18 @@
+# ===============
+# OntoChimpWeb for FastAPI on Azure/Linux
+# Python package requirements
+# 2026-08-03 SMS packages were missing and could not see error msgs
+# ===============
+# Web framework
 FastAPI
 uvicorn
 gunicorn
-mysql-connector-python
+# Database
+mysql-connector-python # contains mysql-connector
+# Configuration
+python-dotenv
+# Data validation
+pydantic
+
+# recall not needed:
+# os, re, collections, typing
