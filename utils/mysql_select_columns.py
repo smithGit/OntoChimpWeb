@@ -9,7 +9,7 @@ from typing import Any
 
 import mysql.connector
 from mysql.connector import MySQLConnection
-from config.settings_loader import settings
+# from config.settings_loader import settings
 # >> end inserted imports
 
 def select_columns():
