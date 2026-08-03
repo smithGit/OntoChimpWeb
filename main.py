@@ -5,7 +5,7 @@ main.py for OntoChimpWeb - Initial FastAPI module for testing
 2026-08-03 SMS Adding logging
 
 Folder: cd "D:\\OntoChimpWeb"
-conda activate env_python314
+conda activate python314
 Execute: uvicorn main:app
 
 """

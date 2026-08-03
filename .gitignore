@@ -3,3 +3,4 @@ __pycache__/
 local_settings.py
 node_modules
 config/logging_config.py
+utils/mysql_select_columnsX.py
