@@ -31,39 +31,39 @@ def root():
 
 @app.get("/ocw_version")
 def show_version():
-    test_result = select_columns()
+    test_result = "No longeer doing: select_columns; do select_terms"
     return {
         "version": "OCW_v0.1",
         "module_test": test_result,
     }
 
-# @app.get("/select_terms")
-# def select_terms()->dict[str, object]:
-#     """
-#     return prototype terms stored in Azure MySQL
-#     """
-#     try:
-#         rows = select_columns(
-#             table_name="term_model_doc",
-#             column_names=[
-#                 "term_id",
-#                 "model_id",
-#                 "doc_id",
-#                 "term_norm",
-#             ],
-#         )
-#         return({
-#             "count":len(rows),
-#             "terms": rows
-#         })
-#     except Exception as exc:
-#         # Keep the detailed database error in Azure logs.
-#         print(f"/select_terms failed: {exc}", flush=True)
+@app.get("/select_terms")
+def select_terms()->dict[str, object]:
+    """
+    return prototype terms stored in Azure MySQL
+    """
+    try:
+        rows = select_columns(
+            table_name="term_model_doc",
+            column_names=[
+                "term_id",
+                "model_id",
+                "doc_id",
+                "term_norm",
+            ],
+        )
+        return({
+            "count":len(rows),
+            "terms": rows
+        })
+    except Exception as exc:
+        # Keep the detailed database error in Azure logs.
+        print(f"/select_terms failed: {exc}", flush=True)
 
-#         # Do not send credentials or detailed infrastructure errors
-#         # to the browser.
-#         raise HTTPException(
-#             status_code=500,
-#             detail="Unable to retrieve terms from the database.",
-#         ) from exc
+        # Do not send credentials or detailed infrastructure errors
+        # to the browser.
+        raise HTTPException(
+            status_code=500,
+            detail="Unable to retrieve terms from the database.",
+        ) from exc
 
