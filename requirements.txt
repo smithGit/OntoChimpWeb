@@ -13,7 +13,7 @@ mysql-connector-python # contains mysql-connector
 # Configuration
 python-dotenv
 # Data validation
-dataclasses
+# 8/3 REMOVED: dataclasses
 # later: pydantic
 
 # recall not needed:

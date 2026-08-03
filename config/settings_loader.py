@@ -5,8 +5,8 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-
-@dataclass(frozen=True)
+# 8/3 added  kw_only!
+@dataclass(frozen=True, kw_only=True)
 class Settings:
     mysql_host: str
     mysql_port: int
