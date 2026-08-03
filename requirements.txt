@@ -8,8 +8,8 @@ fastapi
 uvicorn
 gunicorn
 # Database
+# provides mysql-connector:
 mysql-connector-python # contains mysql-connector
-mysql-connector
 # Configuration
 python-dotenv
 # Data validation
