@@ -13,6 +13,7 @@ mysql-connector-python # contains mysql-connector
 # Configuration
 python-dotenv
 # Data validation
+dataclasses
 # later: pydantic
 
 # recall not needed:
