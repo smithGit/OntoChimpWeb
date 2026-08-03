@@ -4,7 +4,7 @@
 # 2026-08-03 SMS packages were missing and could not see error msgs
 # ===============
 # Web framework
-FastAPI
+fastapi
 uvicorn
 gunicorn
 # Database
