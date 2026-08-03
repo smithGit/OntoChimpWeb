@@ -88,45 +88,45 @@ def select_columns(
     except mysql.connector.Error as exc:
         print(f"MySQL SELECT failed: {exc}", flush=True)
         raise
-#     table_sql = _validate_identifier(table_name)
-#     print(f"temp done valid")
-#     if column_names:
-#         columns_sql = ", ".join(
-#             _validate_identifier(column) for column in column_names
-#         )
-#     else:
-#         columns_sql = "*"
+    table_sql = _validate_identifier(table_name)
+    print(f"temp done valid")
+    if column_names:
+        columns_sql = ", ".join(
+            _validate_identifier(column) for column in column_names
+        )
+    else:
+        columns_sql = "*"
 
-#     sql_query = f"SELECT {columns_sql} FROM {table_sql}"
+    sql_query = f"SELECT {columns_sql} FROM {table_sql}"
 
-#     print(f"Executing query: {sql_query}", flush=True)
-#     # rows = {"term_id": "t_123456789x", "term_norm": "suicde attempt"}
-#     # return rows
-#     connection: MySQLConnection | None = None
-#     cursor = None
-#     try:
-#         connection = _get_connection()
-#         print(f"After connections, user: {settings.mysql_user}")
-#         # dictionary=True returns:
-#         # {"term_id": "...", "term_norm": "..."}
-#         # rather than:
-#         # ("...", "...")
-#         cursor = connection.cursor(dictionary=True)
-#         cursor.execute(sql_query)
-#         rows = cursor.fetchall()
-#         print(f"Data retrieved: {len(rows)} rows", flush=True)
+    print(f"Executing query: {sql_query}", flush=True)
+    # rows = {"term_id": "t_123456789x", "term_norm": "suicde attempt"}
+    # return rows
+    # TODO: connection: MySQLConnection | None = None
+    cursor = None
+    try:
+        # TODO put in sep try...connection = _get_connection()
+        # print(f"After connections, user: {settings.mysql_user}")
+        # dictionary=True returns:
+        # {"term_id": "...", "term_norm": "..."}
+        # rather than:
+        # ("...", "...")
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute(sql_query)
+        rows = cursor.fetchall()
+        print(f"Data retrieved: {len(rows)} rows", flush=True)
 
-#         return rows
+        return rows
 
-#     except mysql.connector.Error as exc:
-#         print(f"MySQL SELECT failed: {exc}", flush=True)
-#         raise
+    except mysql.connector.Error as exc:
+        print(f"MySQL SELECT failed: {exc}", flush=True)
+        raise
 
-#     finally:
-#         if cursor is not None:
-#             cursor.close()
+    finally:
+        if cursor is not None:
+            cursor.close()
 
-#         if connection is not None and connection.is_connected():
-#             connection.close()
+        if connection is not None and connection.is_connected():
+            connection.close()
 
 
